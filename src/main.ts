@@ -22,7 +22,6 @@ let player2 = new ComputerPlayer(paddleX, 0, paddleWidth, paddleHeight);
 
 document.addEventListener('keydown', keyDownHandler, false);
 document.addEventListener('keyup', keyUpHandler, false);
-
 draw();
 
 function draw() {
@@ -54,7 +53,7 @@ function draw() {
 
 function checkCollision(ball: Ball, player: Player) {
     if (ball.x > player.paddleX && ball.x < player.paddleX + player.paddleWidth) {
-        ball.dy = -ball.dy;
+      ball.dy = -ball.dy;
     }
     else {
       ball.resetBall(canvas);
