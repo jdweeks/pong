@@ -1,0 +1,16 @@
+{
+  "name": "pong",
+  "version": "1.0.0",
+  "description": "A super simple HTML5 pong game",
+  "main": "main.js",
+  "author": "JD Weeks",
+  "license": "MIT",
+  "scripts": {
+    "build": "browserify src/main.ts -p [ tsify --strict ] > dist/bundle.js"
+  },
+  "devDependencies": {
+    "browserify": "^16.5.0",
+    "tsify": "^4.0.1",
+    "typescript": "^3.7.5"
+  }
+}
