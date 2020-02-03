@@ -88,7 +88,7 @@ var Player = /** @class */ (function () {
         this.paddleHeight = paddleHeight;
         this.leftPressed = false;
         this.rightPressed = false;
-        this.dPX = 0;
+        this.dPX = 7;
     }
     Player.prototype.drawPaddle = function (ctx) {
         ctx.beginPath();
@@ -99,9 +99,9 @@ var Player = /** @class */ (function () {
     };
     Player.prototype.movePaddle = function (canvas, x, y) {
         if (this.rightPressed && this.paddleX < canvas.width - this.paddleWidth)
-            this.paddleX += 9;
+            this.paddleX += this.dPX;
         if (this.leftPressed && this.paddleX > 0)
-            this.paddleX -= 9;
+            this.paddleX -= this.dPX;
     };
     return Player;
 }());
@@ -143,6 +143,7 @@ function draw() {
         checkCollision(ball, player1);
     if (ball.y + ball.dy < ball.radius)
         checkCollision(ball, player2);
+    player1.movePaddle(canvas, ball.x, ball.y);
     player2.movePaddle(canvas, ball.x, ball.y);
     ball.x += ball.dx;
     ball.y += ball.dy;
@@ -151,7 +152,7 @@ function draw() {
     }, DRAW_DELAY);
 }
 function checkCollision(ball, player) {
-    if (ball.x > player.paddleX && ball.x < player.paddleX + player.paddleWidth) {
+    if (ball.x > player.paddleX - 15 && ball.x < player.paddleX + player.paddleWidth + 15) {
         ball.dy = -ball.dy;
     }
     else {

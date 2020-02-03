@@ -17,7 +17,7 @@ export default class Player {
     this.leftPressed = false;
     this.rightPressed = false;
 
-    this.dPX = 0;
+    this.dPX = 7;
   }
 
   drawPaddle(ctx: CanvasRenderingContext2D) {
@@ -30,8 +30,8 @@ export default class Player {
 
   movePaddle(canvas: HTMLCanvasElement, x: number, y: number) {
     if (this.rightPressed && this.paddleX < canvas.width - this.paddleWidth)
-      this.paddleX += 9;
+      this.paddleX += this.dPX;
     if (this.leftPressed && this.paddleX > 0)
-      this.paddleX -= 9;
+      this.paddleX -= this.dPX;
   }
 }

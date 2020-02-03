@@ -41,6 +41,7 @@ function draw() {
   if (ball.y + ball.dy < ball.radius)
     checkCollision(ball, player2);
   
+  player1.movePaddle(canvas, ball.x, ball.y);
   player2.movePaddle(canvas, ball.x, ball.y);
 
   ball.x += ball.dx;
@@ -52,7 +53,7 @@ function draw() {
 }
 
 function checkCollision(ball: Ball, player: Player) {
-    if (ball.x > player.paddleX && ball.x < player.paddleX + player.paddleWidth) {
+    if (ball.x > player.paddleX - 15 && ball.x < player.paddleX + player.paddleWidth + 15) {
       ball.dy = -ball.dy;
     }
     else {
